@@ -1,0 +1,176 @@
+@charset "utf-8";
+/* CSS Document */
+
+#slideshow
+{
+	max-width:100%;
+	position:relative;
+	overflow:visible;
+	/*margin:0 auto;*/
+	border:none;
+	border-radius: 8px 8px 0px 0px;
+}
+
+.mask
+{
+	overflow: hidden;
+	height:300px;
+	border-radius: 8px 8px 0px 0px;
+}
+
+.mask ul
+{
+	position:relative;
+	margin:0;
+	padding:0;
+}
+
+.mask li
+{
+	list-style:none;
+	position:absolute;
+	width:100%;
+	left:-100%;
+}
+
+.mask img
+{
+	width:100%;
+}
+
+.progress-bar 
+{
+   position: relative;
+   top: 0px;
+   width: 100%;
+   height: 10px;
+   background: #000;
+   animation: fullexpand 20s ease-out infinite;
+}
+
+#slideshow .tooltip {
+   background: rgba(0,0,0,0.7);
+   max-width: 60%;
+   height: 20%;
+   position: relative;
+   bottom: 75px;
+   left: 100%;
+   opacity:0;
+   z-index:-1;
+   transition: all 0.3s ease-in-out;
+   
+}
+
+#slideshow .tooltip h1 {
+   color: #fff;
+   font-size: 1.5em;
+   font-weight: 300;
+   line-height: 1.75em;
+   padding: 0 0 0 10px;
+}
+
+
+/** Animation Assignment **/
+#slideshow li.first
+{
+	animation: cycleone 20s ease-in-out infinite;
+
+}
+#slideshow li.second
+{
+	animation: cycletwo 20s ease-in-out infinite;
+
+}
+#slideshow li.third
+{
+	animation: cyclethree 20s ease-in-out infinite;
+}
+#slideshow li.fourth
+{
+	animation: cyclefour 20s ease-in-out infinite;
+}
+
+#slideshow li.fifth
+{
+	animation: cyclefive 20s ease-in-out infinite;
+}
+
+
+/** Animation Timing **/
+
+@keyframes cycleone {
+   0%  { left: -100%;} 
+   5%  { left: 0px;} 
+   20% { left: 0px;} 
+   25% { left: 100%;} 
+   100%{ left: 100%;}
+  
+}
+@keyframes cycletwo {
+   0%  { left: -100%;}
+   20% { left: -100%;}
+   25% { left: 0px;}
+   40% { left: 0px;}
+   45% { left: 100%;}
+   100%{ left: 100%;}
+}
+@keyframes cyclethree {
+   0%  { left: -100%;} 
+   40% { left: -100%;}
+   45% { left: 0px;}   
+   60% { left: 0px;} 
+   65% { left: 100%;}   
+   100%{ left: 100%;}
+}
+@keyframes cyclefour {
+   0%  { left: -100%;}
+   60% { left: -100%;}
+   65% { left: 0px;}
+   80% { left: 0px;}
+   85% { left: 100%;}
+   100%{ left: 100%;}
+}
+@keyframes cyclefive {
+   0%  { left: 0px;}
+   5%  { left:100%;}
+   6%  { left:-100%; z-index:-1;}
+   80% { left: -100%; z-index:0;}
+   85% { left: 0px;} 
+   100%{ left: 0px;}
+ }
+ 
+ 
+ /* ANIMATION BAR */
+
+@keyframes fullexpand {
+  
+   /* In these keyframes, the progress-bar starts to come alive */
+   5%, 25%, 45%, 65%, 85% { width: 0%; opacity: 0.3; }
+
+   /* In these keyframes, the progress-bar has finished his path */
+   20%, 40%, 60%, 80%, 100% { width: 100%; opacity: 0.3; }
+
+   /* In these keyframes, the progress-bar will disappear and then resume the cycle */
+   0%, 21%, 41%, 61%, 81% { width: 0%; opacity: 0; }
+}
+ 
+ /** Pause Slideshow when mouse hovers **/
+ 
+#slideshow:hover li,
+#slideshow:hover .progress-bar
+{
+     animation-play-state: paused; 
+}
+
+/** Call Tooltip on Hover **/
+
+#slideshow li#one:hover .tooltip,
+#slideshow li#two:hover .tooltip,
+#slideshow li#three:hover .tooltip,
+#slideshow li#four:hover .tooltip,
+#slideshow li#five:hover .tooltip
+{
+   left: 40%;
+   opacity:1;
+   z-index:2;
+}
